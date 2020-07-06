@@ -21,6 +21,7 @@ namespace Azure_ServiceEndpoint_Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -29,6 +30,8 @@ namespace Azure_ServiceEndpoint_Web
             });
         }
 
+
+        //
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -40,6 +43,8 @@ namespace Azure_ServiceEndpoint_Web
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            string text = $@"";
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
